@@ -37,7 +37,7 @@ The patch is safe — it uses `rename()` to atomically swap the binary, which is
 | Platform | Status | Binary location (auto-detected) |
 |---|---|---|
 | Linux | Tested | `~/.local/share/claude/versions/<ver>` |
-| macOS | Should work | `~/.local/bin/claude`, `/opt/homebrew/bin/claude`, `~/.claude/local/claude` |
+| macOS | Tested | `~/.local/bin/claude`, `/opt/homebrew/bin/claude`, `~/.claude/local/claude` |
 | Windows | Should work | `%LOCALAPPDATA%\Programs\claude\claude.exe`, npm global shim |
 
 The binary is found automatically via `which`/`where` and platform-specific known paths. If auto-detection fails, set `CLAUDE_BINARY=/path/to/binary` manually.
@@ -262,7 +262,7 @@ This patches the salt back to the original, removes the SessionStart hook, and c
 
 ## Limitations
 
-- **Tested on Linux** — macOS and Windows should work but are not yet tested. Please [open an issue](https://github.com/cpaczek/any-buddy/issues) if you hit problems
+- **Tested on Linux and macOS** — Windows should work but is not yet tested. Please [open an issue](https://github.com/cpaczek/any-buddy/issues) if you hit problems
 - **Requires Bun** — needed for matching Claude Code's wyhash implementation
 - **Salt string dependent** — if Anthropic changes the salt from `friend-2026-401` in a future version, the patch logic would need updating (but the tool will detect this and warn you)
 - **Stats partially selectable** — you can pick which stat is highest (peak) and lowest (dump), but not exact values
